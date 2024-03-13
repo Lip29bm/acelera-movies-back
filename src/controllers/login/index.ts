@@ -10,14 +10,14 @@ export const getLogIn = async (req: Request, res: Response) => {
     })
     console.log(senha, camparando.senha)
     if (senha === camparando.senha && usuario === camparando.usuario) {
-      return res.status(500).json({ auth: "true", message: "sucesso" })
+      return res.status(200).json({ message: "sucesso" })
     }
-    return res.status(500).json({ auth: "false", message: "falha" })
-  } catch (error) {
-    console.log(error)
     return res
       .status(500)
       .json({ mensagem: `nome de usuario ou senha invalida` })
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ message: "falha" })
   }
 }
 
